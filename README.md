@@ -37,7 +37,7 @@ IMU：atk_ms901m
 
 ## 编译器工具
 
-keil5、TI System Configuration Tool、OpenMV
+keil5、TI System Configuration Tool
 
 ## 效果
 可以正常完成6问题目
