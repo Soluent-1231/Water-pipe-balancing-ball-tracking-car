@@ -528,7 +528,7 @@ int main(void)
 
 								Cycle_PID_Update();
 
-								if(car_running_time >= 1700)
+								if(car_running_time >= 1800)
 								{
 //										stop_flagg = 1;
 								}
@@ -594,7 +594,7 @@ int main(void)
 
 								Cycle_PID_Update();
 
-								if(car_running_time >= 1700)
+								if(car_running_time >= 1800)
 								{
 //										stop_flagg = 1;
 								}

@@ -1,41 +1,43 @@
-## Example Summary
+# 水管平衡球循迹小车————2026年全国大学生电子设计大赛H题
 
-Empty project using DriverLib.
-This example shows a basic empty project using DriverLib with just main file
-and SysConfig initialization.
+本项目是一个可循迹的30CM*25CM小车，同时在循迹的过程中保持一个按行驶方向放置在小车上的25cmppr材质的水管中的1cm直径的钢珠保持在中点位置平衡
 
-## Peripherals & Pin Assignments
 
-| Peripheral | Pin | Function |
-| --- | --- | --- |
-| SYSCTL |  |  |
-| DEBUGSS | PA20 | Debug Clock |
-| DEBUGSS | PA19 | Debug Data In Out |
 
-## BoosterPacks, Board Resources & Jumper Settings
+## 参赛题目说明
 
-Visit [LP_MSPM0G3507](https://www.ti.com/tool/LP-MSPM0G3507) for LaunchPad information, including user guide and hardware files.
+1. 安装摆球位置监测图传装置。装置由发送和接收模块组成，图传发送模块
+须稳固安装在小车上，接收模块可连接显示存储装置并整体置于环形线路以外，
+要求能稳定实时显示钢球在凹槽中滚动的画面，并完整记录每次测试时钢球运动
+的视频且能按要求回放。（6分） 
+2. 小车置于A点，按键启动后沿黑线顺时针行驶一圈并停到A点，计时停
+止并显示行驶总时间，要求行驶总时间≤20s，停车偏差≤2cm。（16分） 
+3. 小车在静止状态时，要求摆杆控制装置控制小球从摆杆中心点O往+5cm
+处运行，到达后折返，再运行到-5cm处并稳定在该点附近，要求运行时间≤5s，
+±5cm处的最大误差绝对值≤1cm。（13分） 
+4．小车置于A点，钢球置于中心点O，按键启动后沿黑线顺时针行驶并通
+过B位置，AB间行驶时间≤8s，行驶过程中钢球须稳定在摆杆中心点附近，误
+差绝对值≤1cm。（20分） 
+5. 小车置于 A点，钢球置于中心点O，按键启动后沿黑线顺时针行驶一圈
+并通过A位置，整圈行驶总时间≤30s，要求行驶过程中钢球须稳定在摆杆中心
+点附近，误差绝对值≤1cm。（20分） 
+6. 小车置于 A 点，钢球置于摆杆任意指定位置，按键启动后沿黑线顺时针
+行驶一圈并通过A位置，整圈行驶总时间≤30s，要求行驶过程中钢球能稳定在
+摆杆上的任意指定位置附近，误差绝对值≤1cm。（20分）
 
-| Pin | Peripheral | Function | LaunchPad Pin | LaunchPad Settings |
-| --- | --- | --- | --- | --- |
-| PA20 | DEBUGSS | SWCLK | N/A | <ul><li>PA20 is used by SWD during debugging<br><ul><li>`J101 15:16 ON` Connect to XDS-110 SWCLK while debugging<br><li>`J101 15:16 OFF` Disconnect from XDS-110 SWCLK if using pin in application</ul></ul> |
-| PA19 | DEBUGSS | SWDIO | N/A | <ul><li>PA19 is used by SWD during debugging<br><ul><li>`J101 13:14 ON` Connect to XDS-110 SWDIO while debugging<br><li>`J101 13:14 OFF` Disconnect from XDS-110 SWDIO if using pin in application</ul></ul> |
+## 硬件材料说明
 
-### Device Migration Recommendations
-This project was developed for a superset device included in the LP_MSPM0G3507 LaunchPad. Please
-visit the [CCS User's Guide](https://software-dl.ti.com/msp430/esd/MSPM0-SDK/latest/docs/english/tools/ccs_ide_guide/doc_guide/doc_guide-srcs/ccs_ide_guide.html#sysconfig-project-migration)
-for information about migrating to other MSPM0 devices.
+主控：[LP_MSPM0G3507](https://www.ti.com/tool/LP-MSPM0G3507)
+摄像头：[K230](https://www.yahboom.com/study/K230#xuanzhon_18)
+电机：MC310编码器减速电机
+舵机：MG90S
+电机驱动板：TB6612
+IMU：atk_ms901m
+灰度传感器
 
-### Low-Power Recommendations
-TI recommends to terminate unused pins by setting the corresponding functions to
-GPIO and configure the pins to output low or input with internal
-pullup/pulldown resistor.
+## 编译器工具
 
-SysConfig allows developers to easily configure unused pins by selecting **Board**→**Configure Unused Pins**.
+keil5、TI System Configuration Tool、OpenMV
 
-For more information about jumper configuration to achieve low-power using the
-MSPM0 LaunchPad, please visit the [LP-MSPM0G3507 User's Guide](https://www.ti.com/lit/slau873).
-
-## Example Usage
-
-Compile, load and run the example.
+## 效果
+可以正常完成6问题目
