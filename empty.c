@@ -138,9 +138,8 @@ typedef enum
     PROBLEM_ONE,
     PROBLEM_TWO,
     PROBLEM_THREE,
-		PROBLEM_FOURTH,
-		FIFTH,
-		SIXTH
+	PROBLEM_FOURTH,
+
 }ProblemState;
 ProblemState problem_state = NONE;
 
@@ -168,7 +167,6 @@ int main(void)
 		
 		// ===== 初始化函数 =====
 		TM1637_Init();
-//    Servo_SetAngle(120);
 
 	  // ===== PID参数 =====
 		PID_Left.Kp=55 ,PID_Left.Kd=1 ,PID_Left.Ki=0.5 ,PID_Left.OutMax=999 ,PID_Left.OutMin=-999; 
@@ -265,24 +263,6 @@ int main(void)
 		if(KeyNum == 4)
 		{
 				problem_state = PROBLEM_FOURTH;
-				car_running_time = 0;
-				car_running_time_flag = 0;
-				start_flag = 0;
-				TrackState = TRACK_NORMAL;
-		}
-		
-		//蒙
-		if(KeyNum == 5)
-		{
-				problem_state = FIFTH;
-				car_running_time = 0;
-				car_running_time_flag = 0;
-				start_flag = 0;
-				TrackState = TRACK_NORMAL;
-		}
-		if(KeyNum == 6)
-		{
-				problem_state = SIXTH;
 				car_running_time = 0;
 				car_running_time_flag = 0;
 				start_flag = 0;
@@ -461,7 +441,7 @@ int main(void)
 
 								if(car_running_time >= 1700)
 								{
-//										stop_flagg = 1;
+										stop_flagg = 1;
 								}
 						}
 				}
@@ -477,139 +457,6 @@ int main(void)
 		}
 		
 		
-		//蒙
-		case FIFTH:
-		{		
-				if(!start_flag)
-				{
-						Base_speed_now=0;
-						RampS_Reset(0.0f);
-						Base_speed=0;
-						start_flag=1;
-						stop_flagg=0;
-				}
-
-				//PID函数
-				if(control_pid_flag_for_track)
-				{
-						control_pid_flag_for_track = 0;
-
-						if(stop_flagg == 2)
-						{
-								set_motor_stop();
-						}
-						else if(stop_flagg == 1)
-						{
-								Base_speed_target = 0;
-								Base_speed_now = RampS(Base_speed_target, S_RAMP_MAX_ACCEL, S_RAMP_MAX_JERK);
-								Base_speed = Base_speed_now;
-
-								PID_Left.ErrorInt  = 0;
-								PID_Right.ErrorInt = 0;
-								PID_Track.ErrorInt = 0;
-
-								if(Base_speed_now <= 0.1f)
-								{
-										set_motor_stop();
-										stop_flagg = 2;
-										car_running_time_flag = 1;
-										TrackState = TRACK_STOP;
-								}
-								else
-								{
-										Cycle_PID_Update();
-								}
-						}
-						else
-						{
-								Base_speed_target = BB_RUN_SPEED;
-								Base_speed_now = RampS(Base_speed_target, S_RAMP_MAX_ACCEL, S_RAMP_MAX_JERK);
-								Base_speed = Base_speed_now;
-
-								Cycle_PID_Update();
-
-								if(car_running_time >= 1800)
-								{
-//										stop_flagg = 1;
-								}
-						}
-				}
-				
-				
-				if(control_pid_flag_for_balance_and_run)
-				{
-						control_pid_flag_for_balance_and_run = 0;
-						CENTER = -150;
-						Balance_PID_Update_three();
-				}
-						break;
-		}
-		case SIXTH:
-		{		
-				if(!start_flag)
-				{
-						Base_speed_now=0;
-						RampS_Reset(0.0f);
-						Base_speed=0;
-						start_flag=1;
-						stop_flagg=0;
-				}
-
-				//PID函数
-				if(control_pid_flag_for_track)
-				{
-						control_pid_flag_for_track = 0;
-
-						if(stop_flagg == 2)
-						{
-								set_motor_stop();
-						}
-						else if(stop_flagg == 1)
-						{
-								Base_speed_target = 0;
-								Base_speed_now = RampS(Base_speed_target, S_RAMP_MAX_ACCEL, S_RAMP_MAX_JERK);
-								Base_speed = Base_speed_now;
-
-								PID_Left.ErrorInt  = 0;
-								PID_Right.ErrorInt = 0;
-								PID_Track.ErrorInt = 0;
-
-								if(Base_speed_now <= 0.1f)
-								{
-										set_motor_stop();
-										stop_flagg = 2;
-										car_running_time_flag = 1;
-										TrackState = TRACK_STOP;
-								}
-								else
-								{
-										Cycle_PID_Update();
-								}
-						}
-						else
-						{
-								Base_speed_target = BB_RUN_SPEED;
-								Base_speed_now = RampS(Base_speed_target, S_RAMP_MAX_ACCEL, S_RAMP_MAX_JERK);
-								Base_speed = Base_speed_now;
-
-								Cycle_PID_Update();
-
-								if(car_running_time >= 1800)
-								{
-//										stop_flagg = 1;
-								}
-						}
-				}
-				
-				
-				if(control_pid_flag_for_balance_and_run)
-				{
-						control_pid_flag_for_balance_and_run = 0;
-						CENTER = -60;
-						Balance_PID_Update_three();
-				}
-						break;
-		}
 		default:
 		{
 				break;

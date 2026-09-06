@@ -75,13 +75,3 @@ float Get_Line_Position(void)
 		
     return last_pos;
 }
-
-//				printf("[%d,%d,%d,%d,", 
-//            gray_sensor_data[0], gray_sensor_data[1], 
-//            gray_sensor_data[2], gray_sensor_data[3]);
-//				printf("%d,%d,%d,%d]\r\n",
-//						gray_sensor_data[4], gray_sensor_data[5], 
-//            gray_sensor_data[6], gray_sensor_data[7]);
-//        delay_cycles(CPUCLK_FREQ/200);
-
-//				printf("Pos=%d\r\n", (int)(position * 100));

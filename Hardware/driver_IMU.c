@@ -250,13 +250,3 @@ void MPU6050_Update_Yaw(float *yaw)
         *yaw += 360;
 }
 
-
-//MPU6050_Init();
-//MPU6050_Calibrate_GyroZ(100);
-//float yaw = 0.0f;
-//MPU6050_Update_Yaw(&yaw);
-//counter++;
-//if (counter % 10 == 0) {
-//		printf("(int: %d)\r\n",  (int)yaw);
-//}
-//delay_ms(20);

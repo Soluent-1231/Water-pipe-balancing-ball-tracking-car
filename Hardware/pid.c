@@ -177,94 +177,94 @@ void Track_PID_Update(void)
 
 					break;
 			}
-//			case TRACK_RIGHT_ANGLE_R:
-//			{
-//					turn_left_target = 6.5;
-//					turn_right_target = -4.5;
-//					
-//					turn_left_speed =Ramp(turn_left_speed,turn_left_target,0.6f);
-//					turn_right_speed =Ramp(turn_right_speed,turn_right_target,0.8f);
-//				
-//					PID_Left.Target  = turn_left_speed;
-//					PID_Right.Target = turn_right_speed;
+			case TRACK_RIGHT_ANGLE_R:
+			{
+					turn_left_target = 6.5;
+					turn_right_target = -4.5;
+					
+					turn_left_speed =Ramp(turn_left_speed,turn_left_target,0.6f);
+					turn_right_speed =Ramp(turn_right_speed,turn_right_target,0.8f);
+				
+					PID_Left.Target  = turn_left_speed;
+					PID_Right.Target = turn_right_speed;
 
-//					PID_Left.Actual  = left_speed;
-//					PID_Right.Actual = right_speed;
-//				
-//					PID_Update(&PID_Left);
-//					PID_Update(&PID_Right);
+					PID_Left.Actual  = left_speed;
+					PID_Right.Actual = right_speed;
+				
+					PID_Update(&PID_Left);
+					PID_Update(&PID_Right);
 
-//					set_left_motor(BASE_PWM + PID_Left.Out);
-//					set_right_motor(BASE_PWM + PID_Right.Out);
+					set_left_motor(BASE_PWM + PID_Left.Out);
+					set_right_motor(BASE_PWM + PID_Right.Out);
 
-//					if(gray_sensor_data[3] && gray_sensor_data[4])
-//					{
-//							TrackState = TRACK_NORMAL;
-//						
-//							turn_left_speed = 0;
-//							turn_right_speed = 0;
+					if(gray_sensor_data[3] && gray_sensor_data[4])
+					{
+							TrackState = TRACK_NORMAL;
+						
+							turn_left_speed = 0;
+							turn_right_speed = 0;
 
-//							PID_Left.ErrorInt=0;
-//							PID_Right.ErrorInt=0;
-//					}
-//					break;
-//			}
-//			case TRACK_RIGHT_ANGLE_L:
-//			{
-//					turn_left_target = -4.5;
-//					turn_right_target = 6.5;
-//					
-//					turn_left_speed =Ramp(turn_left_speed,turn_left_target,0.8f);
-//					turn_right_speed =Ramp(turn_right_speed,turn_right_target,0.6f);
-//				
-//					PID_Left.Target  = turn_left_speed;
-//					PID_Right.Target = turn_right_speed;
+							PID_Left.ErrorInt=0;
+							PID_Right.ErrorInt=0;
+					}
+					break;
+			}
+			case TRACK_RIGHT_ANGLE_L:
+			{
+					turn_left_target = -4.5;
+					turn_right_target = 6.5;
+					
+					turn_left_speed =Ramp(turn_left_speed,turn_left_target,0.8f);
+					turn_right_speed =Ramp(turn_right_speed,turn_right_target,0.6f);
+				
+					PID_Left.Target  = turn_left_speed;
+					PID_Right.Target = turn_right_speed;
 
-//					PID_Left.Actual  = left_speed;
-//					PID_Right.Actual = right_speed;
-//				
-//					PID_Update(&PID_Left);
-//					PID_Update(&PID_Right);
+					PID_Left.Actual  = left_speed;
+					PID_Right.Actual = right_speed;
+				
+					PID_Update(&PID_Left);
+					PID_Update(&PID_Right);
 
-//					set_left_motor(BASE_PWM + PID_Left.Out);
-//					set_right_motor(BASE_PWM + PID_Right.Out);
+					set_left_motor(BASE_PWM + PID_Left.Out);
+					set_right_motor(BASE_PWM + PID_Right.Out);
 
-//					if(gray_sensor_data[3] && gray_sensor_data[4])
-//					{
-//							TrackState = TRACK_NORMAL;
-//						
-//							turn_left_speed = 0;
-//							turn_right_speed = 0;
+					if(gray_sensor_data[3] && gray_sensor_data[4])
+					{
+							TrackState = TRACK_NORMAL;
+						
+							turn_left_speed = 0;
+							turn_right_speed = 0;
 
-//							PID_Left.ErrorInt=0;
-//							PID_Right.ErrorInt=0;
-//					}
-//					break;
-//			}
-//			case TRACK_BRAKE:
-//			{
-//					set_left_motor(-20);
-//					set_right_motor(-20);
+							PID_Left.ErrorInt=0;
+							PID_Right.ErrorInt=0;
+					}
+					break;
+			}
+			case TRACK_BRAKE:
+			{
+					set_left_motor(-20);
+					set_right_motor(-20);
 
-//					brake_count++;
+					brake_count++;
 
-//					if(brake_count>=3)
-//					{		
-//							PID_Left.ErrorInt  = 0;
-//							PID_Right.ErrorInt = 0;
-//							PID_Track.ErrorInt = 0;
-//					
-//							if(direction==-1)
-//									TrackState=TRACK_RIGHT_ANGLE_R;
+					if(brake_count>=3)
+					{		
+							PID_Left.ErrorInt  = 0;
+							PID_Right.ErrorInt = 0;
+							PID_Track.ErrorInt = 0;
+					
+							if(direction==-1)
+									TrackState=TRACK_RIGHT_ANGLE_R;
 
-//							else
-//									TrackState=TRACK_RIGHT_ANGLE_L;
+							else
+									TrackState=TRACK_RIGHT_ANGLE_L;
 
-//							brake_count=0;
-//					}
-//					
-//					break;
-//			}
+							brake_count=0;
+					}
+					
+					break;
+			}
 			case TRACK_NO_LINE:
 			{
 					PID_Left.Target = LOST_LINE_SPEED + last_turn * 0.5f;
@@ -441,7 +441,7 @@ void straight_PID_Update(void)
 
 }
 
-//+5CENTER:240 -5CENTER:-140
+
 #define center 0
 extern int16_t CENTER;
 extern volatile int16_t ball_x;
